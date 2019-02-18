@@ -3,6 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Route, Switch } from 'react-router';
 import Login from './Login';
 import SignUp from './SignUp';
+import Form from './Form';
 
 
 class App extends Component {
@@ -19,7 +20,8 @@ class App extends Component {
       <div className="App">
       <BrowserRouter>
       <Switch>
-        <Route path='/' component={Login} />
+        <Route exact path='/' component={Form}/>
+        <Route path='/login' component={Login} />
         <Route path='/registration' component={SignUp}/>
       </Switch>
       </BrowserRouter>
