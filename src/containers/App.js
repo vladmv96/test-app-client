@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { Route, Switch } from 'react-router';
-import Login from './Login';
-import Chat from './Chat';
+import LoginContainer from './LoginContainer';
+import ChatContainer from './ChatContainer';
 
 
 class App extends Component {
@@ -17,12 +17,12 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-      <BrowserRouter>
-      <Switch>
-        <Route exact path='/' component={Login}/>
-        <Route path='/chat' component={Chat}/>
-      </Switch>
-      </BrowserRouter>
+        <BrowserRouter>
+          <Switch>
+            <Route exact path='/' component={LoginContainer}/>
+            <Route path='/chat' component={ChatContainer}/>
+          </Switch>
+        </BrowserRouter>
       </div>
     );
   }
