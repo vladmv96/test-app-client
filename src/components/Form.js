@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
-import './Login.css';
+import './Form.css';
 import axios from 'axios';
 
 class Login extends Component {
   constructor(props) {
   super(props);
   this.state = {
-    login: "",
-    password: "",
-    data: []
+      text: ""
   }
 }
 
@@ -16,10 +14,11 @@ class Login extends Component {
     this.setState({[e.target.name]: e.target.value})
   }
 
+
   getData = () => {
     axios({
       method: "get",
-      url: "http://localhost:3001/users",
+      url: "http://localhost:3001/test",
     }).then(response => {
       console.log(response.data);
     }).catch(error => {
@@ -27,21 +26,32 @@ class Login extends Component {
     });
   }
 
-  signUp = () => {
-    this.props.history.push('/registration')
+
+  sendForm = () => {
+    const { text } = this.state;
+    axios({
+      method: "post",
+      url: "http://localhost:3001/test",
+      data: {
+          text
+      }
+    }).then(response => {
+      console.log(response.data)
+    }).catch(error => {
+      console.log(error)
+    });
+    this.setState({text: ""})
   }
 
   render() {
 
     return (
-      <div className="login">
+      <div className="form">
       <button className="testButton" onClick={this.getData}> Test API </button>
       <div className="form-container">
-        <input className="login" placeholder="Login" type="login" name="login" value={this.state.login} onChange={this.handleUserInput} />
-        <input className="password" placeholder="Password" type="password" name="password" value={this.state.password} onChange={this.handleUserInput} />
+        <textarea name="text" value={this.state.text} onChange={this.handleUserInput} />
         <div>
-        <button> Войти </button>
-        <button onClick={this.signUp}> Регистрация </button>
+        <button onClick={this.sendForm}> Отправить </button>
         </div>
         </div>
       </div>

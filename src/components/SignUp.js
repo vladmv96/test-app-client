@@ -20,7 +20,7 @@ handleUserInput = (e) => {
   }
 
   goToBack = () => {
-      this.props.history.push('/login');
+      this.props.history.push('/');
   }
 
 addUser = () => {
