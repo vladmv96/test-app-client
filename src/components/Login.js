@@ -13,11 +13,6 @@ class Login extends Component {
   }
 }
 
-  count = () => {
-    let count = this.state.count*2;
-    this.setState({count});
-  }
-
   handleUserInput = (e) => {
     this.setState({[e.target.name]: e.target.value})
   }
