@@ -6,9 +6,7 @@ class Login extends Component {
   constructor(props) {
   super(props);
   this.state = {
-    login: "",
-    password: "",
-    data: []
+    login: ""
   }
 }
 
@@ -26,9 +24,11 @@ class Login extends Component {
       console.log(error)
     });
   }
+  
 
-  signUp = () => {
-    this.props.history.push('/registration')
+  signIn = () => {
+    if (!this.state.login) return;
+    this.props.history.push('/chat')
   }
 
   render() {
@@ -37,11 +37,10 @@ class Login extends Component {
       <div className="login">
       <button className="testButton" onClick={this.getData}> Test API </button>
       <div className="form-container">
+      <h2>Введите свое имя</h2>
         <input className="login" placeholder="Login" type="login" name="login" value={this.state.login} onChange={this.handleUserInput} />
-        <input className="password" placeholder="Password" type="password" name="password" value={this.state.password} onChange={this.handleUserInput} />
         <div>
-        <button> Войти </button>
-        <button onClick={this.signUp}> Регистрация </button>
+        <button onClick={this.signIn}> Войти </button>
         </div>
         </div>
       </div>

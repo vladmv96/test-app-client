@@ -14,11 +14,12 @@ input {
   padding: 1px;
   font-size: 20px;
   margin-top: 10px;
+  width: 90%;
 }
 
 textarea {
   height: 200px;
-  width: 450px;
+  max-width: 450px;
 }
 
 .form-container {
